@@ -47,7 +47,7 @@ for alignment in os.listdir(real_ali_path):
             model = model.replace(model.split('+')[0], base_model)
             # new version of iqtree
             new_alignment = reverse_model_map[model.split('+')[0]] + alignment[1:]
-            command = f"E:\\iqtree-2.3.4-Windows\\iqtree-2.3.4-Windows\\bin\\iqtree2 --alisim {os.path.join(outpath, new_alignment)} -s {os.path.join(real_ali_path, alignment)} -te {treefile} -m {model} --prefix {os.path.join(outpath, new_alignment)} --num-alignments 3"
+            command = f"E:\\iqtree-2.3.4-Windows\\iqtree-2.3.4-Windows\\bin\\iqtree2 --alisim {os.path.join(outpath, new_alignment)} -s {os.path.join(real_ali_path, alignment)} -te {treefile} -m {model} --prefix {os.path.join(outpath, new_alignment)} --num-alignments 3 -nt 7"
             # print(command)
             os.system(command)
             # remove unnecessary files if exist
