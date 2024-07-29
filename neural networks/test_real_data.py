@@ -54,6 +54,7 @@ correct_2 = 0
 wrong_top_2 = []
 total = 0
 results_95 = []
+results_90 = []
 
 with torch.no_grad():
     for data, labels in data_loader:
@@ -64,14 +65,22 @@ with torch.no_grad():
         _, pred_label_2 = torch.topk(pred, 2, 1)  # (batch_size, 2)
         for i in range(labels.size(0)):
             sorted_probs, sorted_indices = torch.sort(pred[i], descending=True)
-            cumulative_prob = 0.0
+            cumulative_prob_95 = 0.0
             num_results = 0
             for prob in sorted_probs:
-                cumulative_prob += prob.item()
+                cumulative_prob_95 += prob.item()
                 num_results += 1
-                if cumulative_prob >= 0.95:
+                if cumulative_prob_95 >= 0.95:
                     break
             results_95.append(num_results)
+            cumulative_prob_90 = 0.0
+            num_results = 0
+            for prob in sorted_probs:
+                cumulative_prob_90 += prob.item()
+                num_results += 1
+                if cumulative_prob_90 >= 0.90:
+                    break
+            results_90.append(num_results)
             if pred_label_2[i][0] != labels[i] and pred_label_2[i][1] == labels[i]:
                 wrong_top_2.append((labels[i].item(), pred_label_2[i][0].item()))
         correct_1 += (pred_label_1 == labels).sum().item()
@@ -83,5 +92,6 @@ with torch.no_grad():
 
 # print the number of each element in results_95
 print(pd.Series(results_95).value_counts())
+print(pd.Series(results_90).value_counts())
 print(correct_1 / total * 100)
 print(correct_2 / total * 100)
