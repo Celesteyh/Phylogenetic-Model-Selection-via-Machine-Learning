@@ -1,4 +1,4 @@
-# class SqueezeExcitation is copied from PyTorch implementation of Squeeze-and-Excitation Networks
+# class SqueezeExcitation is copied from PyTorch's implementation: https://pytorch.org/vision/main/_modules/torchvision/ops/misc.html#SqueezeExcitation
 # See LICENSE file for details
 
 import torch
