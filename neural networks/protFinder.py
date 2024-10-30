@@ -1,3 +1,6 @@
+# class SqueezeExcitation is copied from PyTorch implementation of Squeeze-and-Excitation Networks
+# See LICENSE file for details
+
 import torch
 import torch.nn as nn
 
