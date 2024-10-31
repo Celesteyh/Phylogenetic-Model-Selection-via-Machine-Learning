@@ -5,8 +5,6 @@ import os
 from ete3 import Tree
 import time
 
-model_map = {'LG': 0, 'WAG': 1, 'JTT': 2, 'Q.plant': 3, 'Q.bird': 4, 'Q.mammal': 5, 'Q.pfam': 6}
-
 
 def sample_from_distribution(dist_name, dist_params, lbound, ubound, r):
     """
@@ -124,6 +122,7 @@ def generate_all(base_model_list, num_iterations):
 
 
 def main():
+    model_map = {'LG': 0, 'WAG': 1, 'JTT': 2, 'Q.plant': 3, 'Q.bird': 4, 'Q.mammal': 5, 'Q.pfam': 6}
     start_time = time.time()
     base_model_list = ['LG', 'WAG', 'JTT', 'Q.plant', 'Q.bird', 'Q.mammal', 'Q.pfam']
     n_replicates = 5
