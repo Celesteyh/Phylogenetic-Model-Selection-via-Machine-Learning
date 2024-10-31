@@ -1,2 +1,2 @@
-# Phylogenetics
-A repo for COMP8800. Here are some unpolished important scripts for different usages.
+# Phylogenetic Model Selection via Machine Learning
+Here are some important scripts used in my ANU comp8800 research project.
