@@ -52,3 +52,6 @@ class EarlyStopping(object):
             if mode == 'max':
                 self.is_better = lambda a, best: a > best + (
                             best * min_delta / 100)
+    def reset(self):
+        self.num_bad_epochs = 0
+        self.best = None
