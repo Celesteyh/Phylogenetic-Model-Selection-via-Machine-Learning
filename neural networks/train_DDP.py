@@ -6,7 +6,7 @@ import torch.distributed as dist
 from torch.distributed import init_process_group, destroy_process_group
 import os
 import argparse
-import Encoder
+import RHASFinder
 import numpy as np
 import torch.nn as nn
 from torch.optim.lr_scheduler import ReduceLROnPlateau
@@ -216,7 +216,7 @@ def load_train_objs(train_data_path_1: str, val_data_path_1: str, train_data_pat
     train_set = MyDataset(train_data_path_1, train_data_path_2)
     vali_set = MyDataset(val_data_path_1, val_data_path_2)
 
-    model = Encoder.EncoderBlock()
+    model = RHASFinder.EncoderBlock()
     optimizer = torch.optim.AdamW(model.parameters(), weight_decay=weight_decay, lr=learning_rate)
     loss_fn = nn.CrossEntropyLoss()
     scaler = GradScaler()
